@@ -25,9 +25,17 @@ class Sidebar extends Component {
   };
 
   render() {
-    let btn = <PrimaryButton clicked={this.props.toggleFavorite}>Show Favorites</PrimaryButton>;
+    let btn = (
+      <PrimaryButton clicked={this.props.toggleFavorite}>
+        Show Favorites
+      </PrimaryButton>
+    );
     if (this.props.isFavorite) {
-      btn = <PrimaryButton clicked={this.props.toggleFavorite}>Hide Favorites</PrimaryButton>;
+      btn = (
+        <PrimaryButton clicked={this.props.toggleFavorite}>
+          Hide Favorites
+        </PrimaryButton>
+      );
     }
     return (
       <Sider
@@ -60,9 +68,13 @@ class Sidebar extends Component {
             </Menu.Item>
           </SubMenu>
         </Menu>
-        {!this.state.collapsed 
-          ? btn
-          : <PrimaryButton clicked={this.props.toggleFavorite}><Icon type="star" /></PrimaryButton>}
+        {!this.state.collapsed ? (
+          btn
+        ) : (
+          <PrimaryButton clicked={this.props.toggleFavorite}>
+            <Icon type="star" />
+          </PrimaryButton>
+        )}
       </Sider>
     );
   }
@@ -71,17 +83,17 @@ class Sidebar extends Component {
 const mapStateToProps = state => {
   return {
     isFavorite: state.filter.isFavorite
-  }
-}
+  };
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     toggleFavorite: () => dispatch(setFavorite()),
     setAllProducts: () => dispatch(setFilteredProductsAll()),
     setLaptops: () => dispatch(setFilteredProductsLaptops()),
     setPhones: () => dispatch(setFilteredProductsPhones()),
     setWatch: () => dispatch(setFilteredProductsWatch())
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

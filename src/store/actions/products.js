@@ -63,14 +63,14 @@ export const purchaseProduct = product => {
   };
 };
 
-export const addQuantity = (id) => {
+export const addQuantity = id => {
   return {
     type: ADD_QUANTITY,
     payload: id
   };
 };
 
-export const subtractQuantity = (id) => {
+export const subtractQuantity = id => {
   return {
     type: SUBTRACT_QUANTITY,
     payload: id

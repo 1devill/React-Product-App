@@ -8,19 +8,10 @@ import Sidebar from "../../containers/Sidebar/Sidebar";
 import MainContent from "../../routes/MainContent";
 
 class LayoutComponent extends Component {
-  // state = {
-  //   filters: {
-  //     isFilteredAll: true,
-  //     isFilteredPhones: false,
-  //     isFilteredLaptops: false,
-  //     isFilteredWatch: false
-  //   }
-  // }
-
   render() {
     return (
       <Layout style={{ minHeight: "100vh" }}>
-          <Sidebar />
+        <Sidebar />
         <Layout>
           <Header />
           <MainContent />
@@ -29,7 +20,6 @@ class LayoutComponent extends Component {
       </Layout>
     );
   }
-    
 }
 
 export default LayoutComponent;

@@ -9,21 +9,23 @@ class Cart extends Component {
   render() {
     console.log(this.props);
     let totalPricesArray = [];
-    totalPricesArray.push(this.props.purchasingProducts.map(item => item.price * item.counter));
+    totalPricesArray.push(
+      this.props.purchasingProducts.map(item => item.price * item.counter)
+    );
     const totalPrice = totalPricesArray.reduce((acc, item) => {
-        if (typeof item === "object") {
-            let sum = 0;
-            item.reduce( (acc ,item) => {
-                sum += item;
-                return acc;
-            }, 0);
-            return acc + sum;
-        }
-        return acc + item;
+      if (typeof item === "object") {
+        let sum = 0;
+        item.reduce((acc, item) => {
+          sum += item;
+          return acc;
+        }, 0);
+        return acc + sum;
+      }
+      return acc + item;
     }, 0);
     return (
       <Row>
-        {this.props.purchasingProducts.map((item, index) => {
+        {this.props.purchasingProducts.map(item => {
           return (
             <div key={item.id} style={{ marginBottom: "30px" }}>
               <Col span={8}>

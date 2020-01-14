@@ -19,7 +19,7 @@ const initialState = {
 
 const products = (state = initialState, action) => {
   switch (action.type) {
-    case GET_PRODUCTS:
+    case GET_PRODUCTS: {
       let updatedProducts = [...state.products];
       for (let key in action.payload) {
         updatedProducts.push(action.payload[key]);
@@ -29,7 +29,8 @@ const products = (state = initialState, action) => {
         products: updatedProducts,
         filteredProducts: updatedProducts
       };
-    case TOGGLE_FAVORITE_PRODUCTS:
+    }
+    case TOGGLE_FAVORITE_PRODUCTS: {
       if (!state.favProducts.includes(action.payload)) {
         return {
           ...state,
@@ -44,7 +45,8 @@ const products = (state = initialState, action) => {
           favProducts: newFavProducts
         };
       }
-    case FILTER_CATEGORIES_LAPTOPS:
+    }
+    case FILTER_CATEGORIES_LAPTOPS: {
       const newLaptops = [...state.products].filter(
         item => item.category === "laptops"
       );
@@ -52,13 +54,15 @@ const products = (state = initialState, action) => {
         ...state,
         filteredProducts: newLaptops
       };
-    case FILTER_CATEGORIES_ALL:
+    }
+    case FILTER_CATEGORIES_ALL: {
       const newArr = [...state.products];
       return {
         ...state,
         filteredProducts: newArr
       };
-    case FILTER_CATEGORIES_PHONES:
+    }
+    case FILTER_CATEGORIES_PHONES: {
       const newPhones = [...state.products].filter(
         item => item.category === "phones"
       );
@@ -66,7 +70,8 @@ const products = (state = initialState, action) => {
         ...state,
         filteredProducts: newPhones
       };
-    case FILTER_CATEGORIES_WATCH:
+    }
+    case FILTER_CATEGORIES_WATCH: {
       const newWatch = [...state.products].filter(
         item => item.category === "watch"
       );
@@ -74,7 +79,8 @@ const products = (state = initialState, action) => {
         ...state,
         filteredProducts: newWatch
       };
-    case PURCHASE_PRODUCT:
+    }
+    case PURCHASE_PRODUCT: {
       if (!state.purchasingProducts.includes(action.payload)) {
         return {
           ...state,
@@ -91,7 +97,8 @@ const products = (state = initialState, action) => {
           purchasingProducts: newPurchasingProducts
         };
       }
-    case ADD_QUANTITY:
+    }
+    case ADD_QUANTITY: {
       const newArray = [...state.purchasingProducts];
       const newElem = newArray.findIndex(item => item.id === action.payload);
       newArray[newElem].counter = newArray[newElem].counter + 1;
@@ -99,7 +106,8 @@ const products = (state = initialState, action) => {
         ...state,
         purchasingProducts: newArray
       };
-    case SUBTRACT_QUANTITY:
+    }
+    case SUBTRACT_QUANTITY: {
       const newAr = [...state.purchasingProducts];
       const newEl = newAr.findIndex(item => item.id === action.payload);
       if (newAr[newEl].counter > 1) {
@@ -111,7 +119,7 @@ const products = (state = initialState, action) => {
       } else {
         return state;
       }
-
+    }
     default:
       return state;
   }
